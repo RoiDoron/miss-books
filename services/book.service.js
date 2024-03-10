@@ -13,21 +13,24 @@ export const bookService = {
     getEmptyBook,
     getNextBookId,
     getFilterBy,
-    setFilterBy
+    setFilterBy,
+    getDefaultFilter
 }
 window.bs = bookService
 
-function query() {
+function query(filterBy = getDefaultFilter()) {
     return storageService.query(BOOK_KEY)
-        .then(cars => {
-            // if (gFilterBy.txt) {
-            //     const regex = new RegExp(gFilterBy.txt, 'i')
-            //     cars = cars.filter(car => regex.test(car.vendor))
-            // }
-            // if (gFilterBy.minSpeed) {
-            //     cars = cars.filter(car => car.maxSpeed >= gFilterBy.minSpeed)
-            // }
-            return cars
+        .then(books => {
+            console.log(filterBy);
+            
+            if (filterBy.title) {
+                const regex = new RegExp(filterBy.title, 'i')
+                books = books.filter(book => regex.test(book.title))
+            }
+            if (filterBy.maxPrice) {
+                books = books.filter(book => book.listPrice.amount <= filterBy.maxPrice)
+            }
+            return books
         })
 }
 
@@ -53,6 +56,10 @@ function getEmptyBook(title, description,thumbnail,amount,currencyCode,isOnSale)
 
 function getFilterBy() {
     return {...gFilterBy}
+}
+
+function getDefaultFilter(){
+   return {title: '', maxPrice:200}
 }
 
 function setFilterBy(filterBy = {}) {
