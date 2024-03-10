@@ -1,0 +1,11 @@
+.book-details{
+    text-align: center;
+}
+
+.book-details .green{
+    color: green;
+}
+
+.book-details .red{
+    color: rgb(172, 15, 15);
+}
