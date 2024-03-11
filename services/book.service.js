@@ -120,7 +120,8 @@ function _setNextPrevBookId(book) {
 function addReview(bookId, review) {
     const book = get(bookId)
         .then((book) => {
-            book.review = review
+           if(!book.review) book.review = []
+            book.review.push(review)
             save(book)
             console.log(book);
 

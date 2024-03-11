@@ -59,6 +59,9 @@ export function BookDetails() {
         <h5>pages:{book.pageCount} {getPageCount()}</h5>
         <h5>publish date: {book.publishedDate} {getPublishAge()}</h5>
         <img src={`assets/image/BooksImages/${book.thumbnail}`} />
+        <div className="reviews-container">
+            <h4>reviews</h4>
+        </div>
 
         <AddReview book={book}/>
 
