@@ -29,10 +29,7 @@ export function App() {
 
 
                 </Routes>
-                {/* {page === 'home' && <Home />}
-            {page === 'about' && <About />}
-            {page === 'book' && <BookIndex />} */}
-
+               
             </main>
             <UserMsg/>
         </section>

@@ -9,16 +9,18 @@ export function BookList({ books, onSelectBook,onRemoveBook }) {
     return <ul className="book-list">
      
         {
-            books.map(book => <Link to={`/book/details/${book.id}`}><li key={book.id}>
+            books.map(book => <li key={book.id}>
+                <Link to={`/book/details/${book.id}`}>
                 <BookPreview
                     book={book}
                     onSelectBook={onSelectBook}
-                />
+                /></Link> 
+                <div className="book-actions">
                 <Link to={`/book/edit/${book.id}`}><button>Edit book</button></Link>
                 <button className="remove-btn" onClick={()=>onRemoveBook(book.id)}>X</button>
-                
-                
-            </li></Link>)
+                </div>
+                 
+            </li>)
         }
     </ul>
 }

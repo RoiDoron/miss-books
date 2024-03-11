@@ -3,12 +3,13 @@ const { Link } = ReactRouterDOM
 
 
 import { bookService } from "../services/book.service.js"
+import { showErrorMsg,showSuccessMsg } from "../services/event-bus.service.js"
 
 import { BookList } from "../cmps/BooksList.jsx"
 
 import { BookDetails } from "./BookDetails.jsx"
 import { BookFilter } from "../cmps/BookFilter.jsx"
-import { UserMsg } from "../cmps/UserMsg.jsx"
+
 
 export function BookIndex() {
     const [books, setBooks] = useState(null)
@@ -37,27 +38,15 @@ export function BookIndex() {
         setFilterBy(prevFilter => ({ ...prevFilter, ...fieldsToUpdate }))
     }
 
-    function onUpdateBook(bookToUpdate) {
-        bookService.save(bookToUpdate)
-            .then((savedBook) => {
-                setBooks(prevBooks => prevBooks.map(book => book.id === savedBook.id ? savedBook : book))
-                flashMsg(`Book updated successfully (${bookToUpdate.id})`)
-            })
-            .catch(err => {
-                console.log('Had issues with updating book', err)
-                flashMsg(`Could not update book (${bookToUpdate.id})`)
-            })
-    }
-
     function onRemoveBook(bookId) {
         bookService.remove(bookId)
             .then(() => {
                 setBooks(prevBooks => prevBooks.filter(book => book.id !== bookId))
-                flashMsg(`Book removed successfully (${bookId})`)
+                showSuccessMsg(`Book removed successfully (${bookId})`)
             })
             .catch(err => {
                 console.log('Had issues with removing book', err)
-                flashMsg(`Could not remove book (${bookId})`)
+                showErrorMsg(`Book removed successfully (${bookId})`)
             })
     }
 

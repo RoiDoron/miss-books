@@ -3,6 +3,7 @@ const { useState, useEffect } = React
 const { useNavigate, useParams } = ReactRouter
 
 import { bookService } from "../services/book.service.js"
+import { showErrorMsg,showUserMsg } from "../services/event-bus.service.js"
 
 export function BookEdit() {
     const [bookToEdit, setBookToEdit] = useState(null)
@@ -30,10 +31,12 @@ export function BookEdit() {
         bookService.save(bookToEdit)
             .then(savedBook => {
                 navigate('/book')
+                showSuccessMsg('Book saved successfully')
                 console.log(savedBook);
             })
             .catch(err => {
                 console.log('Had problem saving book', err)
+                showErrorMsg('could not save Book')
 
             })
     }
@@ -67,7 +70,7 @@ export function BookEdit() {
     if(!bookToEdit)return <div>loading</div>
 
     const { title, listPrice } = bookToEdit
-    
+
     return <section className="book-edit">
         <form onSubmit={onSaveBook}>
             <label htmlFor="title"> Title:</label>
