@@ -1,3 +1,4 @@
+import { AddReview } from "../cmps/AddReview.jsx"
 import { bookService } from "../services/book.service.js"
 
 const { useState, useEffect } = React
@@ -26,10 +27,10 @@ export function BookDetails() {
                 console.log('Had problem loading book', err)
                 navigate('/book')
             })
-            .finally(()=>{
+            .finally(() => {
                 setIsLoading(false)
             })
-            
+
 
     }
 
@@ -58,11 +59,14 @@ export function BookDetails() {
         <h5>pages:{book.pageCount} {getPageCount()}</h5>
         <h5>publish date: {book.publishedDate} {getPublishAge()}</h5>
         <img src={`assets/image/BooksImages/${book.thumbnail}`} />
+
+        <AddReview book={book}/>
+
         <div className="flex justify-between">
-            
-        <Link to={`/book/details/${book.prevBookId}`}><button>Prev</button></Link>
-        <Link to={`/book/edit/${book.id}`}><button>Edit book</button></Link>
-        <Link to={`/book/details/${book.nextBookId}`}><button>Next</button></Link>
+            <Link to={`/book/details/${book.prevBookId}`}><button>Prev</button></Link>
+            <Link to={`/book/edit/${book.id}`}><button>Edit book</button></Link>
+            <Link to={`/book/details/${book.nextBookId}`}><button>Next</button></Link>
         </div>
+
     </section>
 }

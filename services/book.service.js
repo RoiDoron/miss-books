@@ -16,7 +16,8 @@ export const bookService = {
     getNextBookId,
     getFilterBy,
     setFilterBy,
-    getDefaultFilter
+    getDefaultFilter,
+    addReview
 }
 window.bs = bookService
 
@@ -114,4 +115,19 @@ function _setNextPrevBookId(book) {
         book.prevBookId = prevBook.id
         return book
     })
+}
+
+function addReview(bookId, review) {
+    const book = get(bookId)
+        .then((book) => {
+            book.review = review
+            save(book)
+            console.log(book);
+
+            return book
+
+        })
+
+
+
 }

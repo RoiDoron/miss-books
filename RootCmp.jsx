@@ -25,6 +25,7 @@ export function App() {
                     <Route path='/book/details/:bookId' element={<BookDetails />} />
                     
                     
+                    
                     <Route path='/about' element={<About />} />
 
 
