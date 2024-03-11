@@ -1,4 +1,5 @@
 import { AddReview } from "../cmps/AddReview.jsx"
+import { Review } from "../cmps/Review.jsx"
 import { bookService } from "../services/book.service.js"
 
 const { useState, useEffect } = React
@@ -10,13 +11,14 @@ export function BookDetails() {
 
     const [isLoading, setIsLoading] = useState(true)
     const [book, setBook] = useState(null)
+    const [index, setIndex] = useState(0)
     const { bookId } = useParams()
     console.log(book);
     const navigate = useNavigate()
 
     useEffect(() => {
         loadBook()
-        console.log(book);
+        
     }, [bookId])
 
     function loadBook() {
@@ -51,7 +53,17 @@ export function BookDetails() {
         else if (book.listPrice.amount < 20) return 'green'
         else return ''
     }
+
+    function onRemoveReview(index) {
+        bookService.removeReview(bookId,index)
+        .then((book)=>{
+            setBook(book)
+        })
+        
+    }
     if (isLoading) return <div>Loading details..</div>
+    const { review } = book
+
     return <section className="book-details">
         <h1>title:{book.title}</h1>
         <h5>description:{book.description}</h5>
@@ -59,11 +71,18 @@ export function BookDetails() {
         <h5>pages:{book.pageCount} {getPageCount()}</h5>
         <h5>publish date: {book.publishedDate} {getPublishAge()}</h5>
         <img src={`assets/image/BooksImages/${book.thumbnail}`} />
-        <div className="reviews-container">
-            <h4>reviews</h4>
-        </div>
+        {book.review ? <ul className="book-list">
 
-        <AddReview book={book}/>
+            {
+                review.map((review,index) => <li key={review.fullName + book.id}>
+                    <Review review={review} />
+                    <button className="remove-btn" onClick={() => onRemoveReview(index)}>X</button>
+                    
+                </li>)
+            }
+        </ul> : <div></div>}
+
+        <AddReview book={book} setBook={setBook}/>
 
         <div className="flex justify-between">
             <Link to={`/book/details/${book.prevBookId}`}><button>Prev</button></Link>

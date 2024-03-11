@@ -3,12 +3,18 @@ const { useState, useEffect } = React
 import { bookService } from "../services/book.service.js";
 
 
-export function AddReview({ book }) {
+export function AddReview({ book, setBook }) {
     const [review, setReview] = useState()
 
     function onAddReview(ev) {
         ev.preventDefault()
         bookService.addReview(book.id, review)
+            .then((book) => {
+                setBook(book)
+            })
+
+
+
     }
 
     function handleChange({ target }) {
@@ -44,7 +50,7 @@ export function AddReview({ book }) {
 
                 onChange={handleChange}
                 name="fullName"
-                // value={review.fullName}
+            // value={review.fullName}
             />
             <label htmlFor="rating">Rating</label>
             <input
@@ -56,7 +62,7 @@ export function AddReview({ book }) {
 
                 onChange={handleChange}
                 name="rating"
-                // value={review.rating}
+            // value={review.rating}
             />
             <label htmlFor="readAt">Reding date</label>
             <input
@@ -66,7 +72,7 @@ export function AddReview({ book }) {
 
                 onChange={handleChange}
                 name="readAt"
-                // value={review.readAt}
+            // value={review.readAt}
             />
             <button>submit</button>
         </form>

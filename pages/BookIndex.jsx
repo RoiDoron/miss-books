@@ -52,6 +52,7 @@ export function BookIndex() {
 
 
     if (!books) return <div>loading...</div>
+    
     return <section className="book-index">
         {
             !selectedBook && <React.Fragment>
@@ -67,12 +68,6 @@ export function BookIndex() {
                 />
             </React.Fragment>
         }
-        {
-            selectedBook && <BookDetails
-                book={selectedBook}
-                onGoBack={() => onSelectBook(null)}
-            />
-        }
-
+      
     </section>
 }

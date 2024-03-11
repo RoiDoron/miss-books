@@ -17,7 +17,8 @@ export const bookService = {
     getFilterBy,
     setFilterBy,
     getDefaultFilter,
-    addReview
+    addReview,
+    removeReview
 }
 window.bs = bookService
 
@@ -120,15 +121,22 @@ function _setNextPrevBookId(book) {
 function addReview(bookId, review) {
     const book = get(bookId)
         .then((book) => {
-           if(!book.review) book.review = []
+            if (!book.review) book.review = []
             book.review.push(review)
             save(book)
             console.log(book);
-
             return book
-
         })
+    return book
+}
 
-
-
+function removeReview(bookId, index) {
+    const book = get(bookId)
+        .then((book) => {
+            book.review.splice(index, 1)
+            save(book)
+            console.log(book);
+            return book
+        })
+        return book
 }
