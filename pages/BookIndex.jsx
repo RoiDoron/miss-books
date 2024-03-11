@@ -33,6 +33,31 @@ export function BookIndex() {
         setFilterBy(prevFilter => ({ ...prevFilter, ...fieldsToUpdate }))
     }
 
+    function onUpdateBook(bookToUpdate) {
+        bookService.save(bookToUpdate)
+            .then((savedBook) => {
+                setBooks(prevBooks => prevBooks.map(book => book.id === savedBook.id ? savedBook : book))
+                // flashMsg(`Book updated successfully (${bookToUpdate.id})`)
+            })
+            .catch(err => {
+                console.log('Had issues with updating book', err)
+                // flashMsg(`Could not update book (${bookToUpdate.id})`)
+            })
+    }
+
+    function onRemoveBook(bookId) {
+        console.log('hi');
+        bookService.save(bookId)
+            .then(() => {
+                setBooks(prevBooks => prevBooks.filter(book => book.id !== bookId))
+                // flashMsg(`Book removed successfully (${bookId})`)
+            })
+            .catch(err => {
+                console.log('Had issues with removing book', err)
+                // flashMsg(`Could not remove book (${bookId})`)
+            })
+    }
+
     if (!books) return <div>loading...</div>
     return <section className="book-index">
         {
@@ -44,6 +69,7 @@ export function BookIndex() {
                 <BookList
                     books={books}
                     onSelectBook={onSelectBook}
+                    onRemoveBook={onRemoveBook}
                 />
             </React.Fragment>
         }
