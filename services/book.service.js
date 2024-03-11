@@ -23,7 +23,7 @@ window.bs = bookService
 function query(filterBy = getDefaultFilter()) {
     return storageService.query(BOOK_KEY)
         .then(books => {
-            console.log(filterBy);
+            console.log(books);
             
             if (filterBy.title) {
                 const regex = new RegExp(filterBy.title, 'i')
@@ -67,7 +67,7 @@ function getDefaultFilter(){
 function setFilterBy(filterBy = {}) {
      if (filterBy.txt !== undefined) gFilterBy.txt = filterBy.txt
     if (filterBy.minSpeed !== undefined) gFilterBy.minSpeed = filterBy.minSpeed
-    return gFilterBy
+    return filterBy
 }
 
 function getNextBookId(bookId) {
