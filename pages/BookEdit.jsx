@@ -5,7 +5,7 @@ const { useNavigate, useParams } = ReactRouter
 import { bookService } from "../services/book.service.js"
 
 export function BookEdit() {
-    const [bookToEdit, setBookToEdit] = useState(bookService.getEmptyBook())
+    const [bookToEdit, setBookToEdit] = useState(null)
     const navigate = useNavigate()
     const { bookId } = useParams()
 
@@ -63,8 +63,11 @@ export function BookEdit() {
         }
        
     }
+   
+    if(!bookToEdit)return <div>loading</div>
 
     const { title, listPrice } = bookToEdit
+    
     return <section className="book-edit">
         <form onSubmit={onSaveBook}>
             <label htmlFor="title"> Title:</label>
