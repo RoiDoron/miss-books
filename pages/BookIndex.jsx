@@ -14,7 +14,6 @@ export function BookIndex() {
     const [books, setBooks] = useState(null)
     const [filterBy, setFilterBy] = useState(bookService.getDefaultFilter())
     const [selectedBook, setSelectedBook] = useState(null)
-    const [userMsg, setUserMsg] = useState('')
     // console.log(bookService.getDefaultFilter());
     // const [filterBy, setFilterBY] = useState(bookService.getDefaultFilter())
     useEffect(() => {
@@ -62,12 +61,6 @@ export function BookIndex() {
             })
     }
 
-    function flashMsg(txt) {
-        setUserMsg(txt)
-        setTimeout(() => {
-            setUserMsg('')
-        }, 3000)
-    }
 
     if (!books) return <div>loading...</div>
     return <section className="book-index">
@@ -92,6 +85,5 @@ export function BookIndex() {
             />
         }
 
-        <UserMsg msg = {userMsg}/>
     </section>
 }
