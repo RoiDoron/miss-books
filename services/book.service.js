@@ -48,12 +48,15 @@ function save(book) {
     if (book.id) {
         return storageService.put(BOOK_KEY, book)
     } else {
+        book = _createBook(book.title,book.listPrice.amount)
+        console.log(book);
+        
         return storageService.post(BOOK_KEY, book)
     }
 }
 
-function getEmptyBook(title, description,thumbnail,amount,currencyCode,isOnSale) {
-    return {  title, description,thumbnail,listPrice:{amount,currencyCode,isOnSale} }
+function getEmptyBook(title, description,thumbnail,amount,currencyCode,isOnSale,pageCount,publishedDate) {
+    return {  title,publishedDate, description,pageCount,thumbnail,listPrice:{amount,currencyCode,isOnSale} }
 }
 
 function getFilterBy() {
@@ -91,9 +94,13 @@ function _createBooks() {
     }
 }
 
-function _createBook(title, description,thumbnail,amount,currencyCode,isOnSale) {
-    const book = getEmptyBook(title, description,thumbnail,amount,currencyCode,isOnSale)
+function _createBook(title,amount, description=utilService.makeLorem(100),thumbnail=getRandomPic(),currencyCode="EUR",isOnSale=false,pageCount=utilService.getRandomIntInclusive(100,1000),publishedDate=utilService.getRandomIntInclusive(1980,2024)) {
+    const book = getEmptyBook(title, description,thumbnail,amount,currencyCode,isOnSale,pageCount,publishedDate)
     book.id = utilService.makeId()
     return book
+}
+
+function getRandomPic(){
+    return `${utilService.getRandomIntInclusive(1,20)}.jpg`
 }
 
