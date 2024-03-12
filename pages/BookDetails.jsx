@@ -1,4 +1,5 @@
 import { AddReview } from "../cmps/AddReview.jsx"
+import { LongTxt } from "../cmps/LongTxt.jsx"
 import { Review } from "../cmps/Review.jsx"
 import { bookService } from "../services/book.service.js"
 
@@ -65,9 +66,10 @@ export function BookDetails() {
     const { review } = book
 
     return <section className="book-details">
+        
         <h1>title:{book.title}</h1>
-        <h5>description:{book.description}</h5>
-        <h5 className={getPriceClass()}>price:{book.listPrice.amount}</h5>
+        <h5>description:<LongTxt txt={book.description}/></h5>
+        <h5 className={getPriceClass()}>price:{book.listPrice.amount} {book.listPrice.isOnSale?'On Sale!':''}</h5>
         <h5>pages:{book.pageCount} {getPageCount()}</h5>
         <h5>publish date: {book.publishedDate} {getPublishAge()}</h5>
         <img src={`assets/image/BooksImages/${book.thumbnail}`} />

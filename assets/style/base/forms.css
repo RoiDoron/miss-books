@@ -16,3 +16,9 @@ input:focus {
     background-color: var(--clr1bg);
     transition: background-color 1s;
 }
+
+button.long-text-btn{
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 2em;
+    padding: 0.1em;
+}

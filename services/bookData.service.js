@@ -442,3 +442,78 @@ export const gBooks = [
       }
     }
   ]
+  
+const newBook =     {
+      "kind": "books#volume",
+      "id": "KAXfDwAAQBAJ",
+      "etag": "QzeU3FRdpdk",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/KAXfDwAAQBAJ",
+      "volumeInfo": {
+        "title": "Harry's Apology",
+        "authors": [
+          "David Martin Anderson"
+        ],
+        "publisher": "ConRoca Publishing",
+        "publishedDate": "2019-11-30",
+        "description": "Harry Kaplonsky is a veteran of World War II, a survivor of the USS Houston's sinking in the South Pacific, and one of the few men still alive who can recount in detail the one thousand and fifteen days of captivity in the notorious Omori POW prison south of Tokyo. It is there Harry was tortured and beaten and witnessed countless atrocities including the murder of his best friend, Curly. Only problem, Harry can't seem to erase the event from his memories, and he sure can't seem to forgive his captors for the barbaric things which took place during his imprisonment. Now, sixty years later, he's angry and on a mission to sue the Obuchi government for an apology. Since his liberation in August, 1945, Harry's life has been spiraling downward, highlighted by one failed relationship after another, five marriages in total, all marred by battering and cruelty. For Harry the suit is more than a legal means to even the score, it is the last opportunity to lay blame for his own failings. Only days from death, Harry's litigation appears to be lapsing with his demise unless he can convince one of the other four Omori survivors to collaborate in the litigation. Unfortunately, all four despise him and won't enjoin the suit. Furthermore, the U.S. government is siding with the Japanese in hopes of winning trade concessions, and vows to fight Harry to the end. The government's legal team is led by none other than Harry's bastard son, Harold, turning the legal battle into a nasty family affair. All appears to be going adversely against the old veteran. Enter Tinker, an aspiring author in the throws of a literary dry spell. She is searching for the one great story (oddly, a non-fiction piece) to turn her fledgling career around. It is the television interview with Harry by Larry King, however, that motivates her into journeying to Texas for the annual USS Houston survivors' reunion and a shot at the rights to Harry's story. A victim of childhood physical abuse herself, Tinker's past soon becomes intertwined with Harry's, the battering both experienced providing common ground. During the course of the interview, Tinker discovers the dark secrets surrounding Harry and his seeming culpability in the deaths of five crewmates. It is this connection which has created a schism between Harry and the last of the Omori survivors. In the end, Tinker must not only reunite the five Omori brothers, she must also come to terms with her own past and forgive her estranged father.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9781892617156"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "1892617153"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 216,
+        "printType": "BOOK",
+        "categories": [
+          "Fiction"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.0.1.0.preview.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=KAXfDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=KAXfDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.com/books?id=KAXfDwAAQBAJ&pg=PT244&dq=harry&hl=&as_pt=BOOKS&cd=1&source=gbs_api",
+        "infoLink": "http://books.google.com/books?id=KAXfDwAAQBAJ&dq=harry&hl=&as_pt=BOOKS&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Harry_s_Apology.html?hl=&id=KAXfDwAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "IL",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "IL",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com/books/download/Harry_s_Apology-sample-pdf.acsm?id=KAXfDwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=KAXfDwAAQBAJ&hl=&as_pt=BOOKS&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "... <b>Harry</b> found a burnt speaker wire, spliced it, and the device began working as good as ever. For <b>Harry</b> the fix was simple but for Fuji it had been a stroke of sheer genius—yon jú san, anata ga atama ga ii, <b>Harry</b>-san (Forty-three seconds&nbsp;..."
+      }
+    }
